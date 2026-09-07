@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated database (rebuilt by `python load_data.py`)
+*.db
+
