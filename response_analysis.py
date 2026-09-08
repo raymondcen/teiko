@@ -96,7 +96,7 @@ def compare_responders(df):
     return result
 
 
-def write_boxplot(df, plot_path):
+def build_boxplot(df):
     ordered = sorted(df["population"].unique())
     fig = px.box(
         df,
@@ -114,7 +114,11 @@ def write_boxplot(df, plot_path):
     )
     fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
     fig.update_layout(showlegend=False)
-    fig.write_html(plot_path, include_plotlyjs="cdn")
+    return fig
+
+
+def write_boxplot(df, plot_path):
+    build_boxplot(df).write_html(plot_path, include_plotlyjs="cdn")
 
 
 def main():
